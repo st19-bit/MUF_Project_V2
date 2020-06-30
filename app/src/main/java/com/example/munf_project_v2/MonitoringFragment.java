@@ -25,7 +25,9 @@ public class MonitoringFragment extends Fragment {
         view.findViewById(R.id.button_start).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                controller.navigate(MonitoringFragmentDirections.actionMonitoringFragmentToFeedbackFragment());
+                controller.navigate(MonitoringFragmentDirections
+                        .actionMonitoringFragmentToFeedbackFragment()
+                        .setDisplayString("Displaystring"));
 
             }
         });
