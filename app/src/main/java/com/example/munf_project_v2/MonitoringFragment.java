@@ -34,6 +34,7 @@ public class MonitoringFragment extends Fragment {
 
         final Button start = view.findViewById(R.id.button_start);
         final Button change_fragment = view.findViewById(R.id.button_to_feedback);
+        final Button change_to_database = view.findViewById(R.id.button_to_database);
 
         final TextView sensor_xzy = view.findViewById(R.id.tv_acceleration_xyz);
 
@@ -50,16 +51,29 @@ public class MonitoringFragment extends Fragment {
             public void onClick(View v) {
                 controller.navigate(MonitoringFragmentDirections
                         .actionMonitoringFragmentToFeedbackFragment()
-                        .setDisplayString("Displaystring"));
+                        .setDisplayString("Hier ist dein Feedback"));
+                // der Teil ist daweil eigentlich komplett unnötig,
+                // finds aber trotzdem cool dass es geht
             }
 
         });
+        change_to_database.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                controller.navigate(MonitoringFragmentDirections
+                        .actionMonitoringFragmentToDatenbankFragment());
+            }
+        });
 
 
-
+        // TODO: start & stop der Messung implementieren + darstellung der Werte
         start.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
+                // HIER Sensor Daten in eine DB speichern
+
+
 
 
                 // observer registrieren:
