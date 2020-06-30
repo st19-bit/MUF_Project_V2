@@ -9,10 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -59,6 +61,9 @@ public class MonitoringFragment extends Fragment {
         ArrayList<BarEntry> z_values = new ArrayList<BarEntry>();
 
         ArrayList<BarDataSet> dataSet = new ArrayList<>();
+        ArrayList<BarEntry> entries = new ArrayList<>();
+
+        final ArrayList<String> xAxisLabel = new ArrayList<>();
 
         // ++++++++++++++ BARCHART +++++++++++++
 
@@ -108,14 +113,6 @@ public class MonitoringFragment extends Fragment {
                             "x:" + accelerationInformation.getX() + " y " + accelerationInformation.getY() + " z "+accelerationInformation.getZ()
                     ); // ACHTUNG: string in stringfile extrahieren!
 
-                    // DARSTELLUNG ÜBER BARCHART:
-//                    x_values.add(new BarEntry(0,accelerationInformation.getX()));
-//                    y_values.add(new BarEntry(1,accelerationInformation.getY()));
-//                    z_values.add(new BarEntry(2,accelerationInformation.getZ()));
-
-
-
-                    ArrayList<BarEntry> entries = new ArrayList<>();
                     entries.add(new BarEntry(0,accelerationInformation.getX()));
                     entries.add(new BarEntry(1,accelerationInformation.getY()));
                     entries.add(new BarEntry(2,accelerationInformation.getZ()));
@@ -124,25 +121,16 @@ public class MonitoringFragment extends Fragment {
                     BarData barData = new BarData();
                     barData.addDataSet(barDataSet);
 
-//                    BarDataSet barDataSet_x = new BarDataSet(x_values, "x-Values");
-//                    BarDataSet barDataSet_y = new BarDataSet(y_values, "y-Values");
-//                    BarDataSet barDataSet_z = new BarDataSet(z_values, "z-Values");
-//
-//                    BarData barData2 = new BarData();
-//                    barData2.addDataSet(barDataSet_x);
-//                    barData2.addDataSet(barDataSet_y);
-//                    barData2.addDataSet(barDataSet_z);
+                    // Achsen schön darstellen:
+                    // https://www.youtube.com/watch?v=0BsPW2DpQgE
+                    // https://www.youtube.com/watch?v=sBqW770P3_U
+                    xAxisLabel.add("x-axis");
+                    xAxisLabel.add("y-axis");
+                    xAxisLabel.add("z-axis");
 
-//                    ArrayList axis = new ArrayList();
-//                    axis.add("x-Achse");
-//                    axis.add("y-Achse");
-//                    axis.add("z-Achse");
-//
-//                    dataSet.add(barDataSet_x);
-//                    dataSet.add(barDataSet_y);
-//                    dataSet.add(barDataSet_z);
+                    XAxis xAxis = barChart.getXAxis();
+                    xAxis.setValueFormatter(new IndexAxisValueFormatter());
 
-                    // barChart.animateY(5000);
                     barChart.setData(barData);
                     barChart.invalidate();
                 });
