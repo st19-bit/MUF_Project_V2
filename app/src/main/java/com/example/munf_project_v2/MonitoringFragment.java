@@ -16,6 +16,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
@@ -47,19 +48,19 @@ public class MonitoringFragment extends Fragment {
         final Button change_fragment = view.findViewById(R.id.button_to_feedback);
         final Button change_to_database = view.findViewById(R.id.button_to_database);
 
+
+        // ++++++++++++ BARCHART ++++++++++++
         final BarChart barChart = view.findViewById(R.id.livedata_barchart);
         // Setup für Barchart
 
 
-        ArrayList<BarEntry> x_values;
-        ArrayList<BarEntry> y_values;
-        ArrayList<BarEntry> z_values;
-        ArrayList<BarDataSet> dataSet;
+        ArrayList<BarEntry> x_values = new ArrayList<BarEntry>();
+        ArrayList<BarEntry> y_values = new ArrayList<BarEntry>();;
+        ArrayList<BarEntry> z_values = new ArrayList<BarEntry>();
 
-        x_values = new ArrayList<BarEntry>();
-        y_values = new ArrayList<BarEntry>();
-        z_values = new ArrayList<BarEntry>();
-        dataSet = new ArrayList<>();
+        ArrayList<BarDataSet> dataSet = new ArrayList<>();
+
+        // ++++++++++++++ BARCHART +++++++++++++
 
         final TextView sensor_xzy = view.findViewById(R.id.tv_acceleration_xyz);
 
@@ -106,28 +107,44 @@ public class MonitoringFragment extends Fragment {
                     sensor_xzy.setText(
                             "x:" + accelerationInformation.getX() + " y " + accelerationInformation.getY() + " z "+accelerationInformation.getZ()
                     ); // ACHTUNG: string in stringfile extrahieren!
-                    x_values.add(new BarEntry(accelerationInformation.getX(),0));
-                    y_values.add(new BarEntry(accelerationInformation.getY(),1));
-                    z_values.add(new BarEntry(accelerationInformation.getZ(),2));
+
+                    // DARSTELLUNG ÜBER BARCHART:
+//                    x_values.add(new BarEntry(0,accelerationInformation.getX()));
+//                    y_values.add(new BarEntry(1,accelerationInformation.getY()));
+//                    z_values.add(new BarEntry(2,accelerationInformation.getZ()));
 
 
 
+                    ArrayList<BarEntry> entries = new ArrayList<>();
+                    entries.add(new BarEntry(0,accelerationInformation.getX()));
+                    entries.add(new BarEntry(1,accelerationInformation.getY()));
+                    entries.add(new BarEntry(2,accelerationInformation.getZ()));
 
+                    BarDataSet barDataSet = new BarDataSet(entries, "values");
+                    BarData barData = new BarData();
+                    barData.addDataSet(barDataSet);
 
-                    BarDataSet barDataSet_x = new BarDataSet(x_values, "x-Values");
-                    BarDataSet barDataSet_y = new BarDataSet(y_values, "y-Values");
-                    BarDataSet barDataSet_z = new BarDataSet(z_values, "z-Values");
+//                    BarDataSet barDataSet_x = new BarDataSet(x_values, "x-Values");
+//                    BarDataSet barDataSet_y = new BarDataSet(y_values, "y-Values");
+//                    BarDataSet barDataSet_z = new BarDataSet(z_values, "z-Values");
+//
+//                    BarData barData2 = new BarData();
+//                    barData2.addDataSet(barDataSet_x);
+//                    barData2.addDataSet(barDataSet_y);
+//                    barData2.addDataSet(barDataSet_z);
 
-                    dataSet.add(barDataSet_x);
-                    dataSet.add(barDataSet_y);
-                    dataSet.add(barDataSet_z);
+//                    ArrayList axis = new ArrayList();
+//                    axis.add("x-Achse");
+//                    axis.add("y-Achse");
+//                    axis.add("z-Achse");
+//
+//                    dataSet.add(barDataSet_x);
+//                    dataSet.add(barDataSet_y);
+//                    dataSet.add(barDataSet_z);
 
-                    barChart.animateY(5000);
-                    BarData barData = new BarData(barDataSet_x,barDataSet_y,barDataSet_z);
-                    barDataSet_x.setColors(ColorTemplate.COLORFUL_COLORS);
-                    barDataSet_y.setColors(ColorTemplate.COLORFUL_COLORS);
-                    barDataSet_z.setColors(ColorTemplate.COLORFUL_COLORS);
+                    // barChart.animateY(5000);
                     barChart.setData(barData);
+                    barChart.invalidate();
                 });
 
             }
