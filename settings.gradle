@@ -1,0 +1,2 @@
+rootProject.name='MunF_Project_v2'
+include ':app'
