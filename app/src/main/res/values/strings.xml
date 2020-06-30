@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MunF_Project_v2</string>
+    <string name="start">Start</string>
+    <string name="sensorwerte_x_y_z">Sensorwerte: x,y,z</string>
+    <string name="you_want_feedback">You want Feedback?</string>
+    <string name="you_want_old_measurements">You want old Measurements?</string>
 </resources>

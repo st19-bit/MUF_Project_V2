@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_monitoringFragment_to_feedbackFragment"
             app:destination="@id/feedbackFragment" />
+        <action
+            android:id="@+id/action_monitoringFragment_to_datenbankFragment"
+            app:destination="@id/datenbankFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_feedback"
@@ -23,4 +26,9 @@
             android:defaultValue="Default"
             app:argType="string"/>
     </fragment>
+    <fragment
+        tools:layout="@layout/fragment_database"
+        android:id="@+id/datenbankFragment"
+        android:name="com.example.munf_project_v2.DatenbankFragment"
+        android:label="DatenbankFragment" />
 </navigation>
