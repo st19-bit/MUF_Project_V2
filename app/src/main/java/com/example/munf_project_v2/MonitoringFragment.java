@@ -4,12 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class MonitoringFragment extends Fragment {
+
+    private SensorViewModel sensorViewModel;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -17,8 +26,49 @@ public class MonitoringFragment extends Fragment {
         return view;
     }
 
+    // Sensordaten anhand der LiveData auslesen:
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        final NavController controller = Navigation.findNavController(view);
+
+        final Button start = view.findViewById(R.id.button_start);
+        final Button change_fragment = view.findViewById(R.id.button_to_feedback);
+
+        final TextView sensor_xzy = view.findViewById(R.id.tv_acceleration_xyz);
+
+        sensorViewModel = new ViewModelProvider(this,
+                ViewModelProvider
+                        .AndroidViewModelFactory
+                        .getInstance(getActivity()
+                                .getApplication()))
+                .get(SensorViewModel.class);
+
+        change_fragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Switch to Feedback Fragment:
+                controller.navigate(MonitoringFragmentDirections.actionMonitoringFragmentToFeedbackFragment());
+
+            }
+        });
+
+
+
+        start.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+
+                // observer registrieren:
+                sensorViewModel.accelerationLiveData.observe(getViewLifecycleOwner(), (accelerationInformation)->{
+                    sensor_xzy.setText(
+                            "x:" + accelerationInformation.getX() + " y " + accelerationInformation.getY() + " z "+accelerationInformation.getZ()
+                    ); // ACHTUNG: string in stringfile extrahieren!
+
+                });
+
+            }
+        });
     }
 }

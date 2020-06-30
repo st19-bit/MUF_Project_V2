@@ -17,5 +17,10 @@
         tools:layout="@layout/fragment_feedback"
         android:id="@+id/feedbackFragment"
         android:name="com.example.munf_project_v2.FeedbackFragment"
-        android:label="FeedbackFragment" />
+        android:label="FeedbackFragment" >
+        <argument
+            android:name="displayString"
+            android:defaultValue="Default"
+            app:argType="string"/>
+    </fragment>
 </navigation>
