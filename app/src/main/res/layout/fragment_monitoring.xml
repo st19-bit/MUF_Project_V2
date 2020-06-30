@@ -7,23 +7,28 @@
         android:id="@+id/button_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start" />
+        android:text="@string/start" />
 
     <TextView
         android:id="@+id/tv_acceleration_xyz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/sensorwerte_x_y_z" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/livedata_barchart"
+        android:layout_width="match_parent"
+        android:layout_height="550dip"/>
 
     <Button
         android:id="@+id/button_to_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You want Feedback?" />
+        android:text="@string/you_want_feedback" />
 
     <Button
         android:id="@+id/button_to_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You want old Measurements?" />
+        android:text="@string/you_want_old_measurements" />
 </LinearLayout>

@@ -1,11 +1,22 @@
 package com.example.munf_project_v2;
 
 import android.os.Bundle;
+import android.os.DropBoxManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +46,20 @@ public class MonitoringFragment extends Fragment {
         final Button start = view.findViewById(R.id.button_start);
         final Button change_fragment = view.findViewById(R.id.button_to_feedback);
         final Button change_to_database = view.findViewById(R.id.button_to_database);
+
+        final BarChart barChart = view.findViewById(R.id.livedata_barchart);
+        // Setup für Barchart
+
+
+        ArrayList<BarEntry> x_values;
+        ArrayList<BarEntry> y_values;
+        ArrayList<BarEntry> z_values;
+        ArrayList<BarDataSet> dataSet;
+
+        x_values = new ArrayList<BarEntry>();
+        y_values = new ArrayList<BarEntry>();
+        z_values = new ArrayList<BarEntry>();
+        dataSet = new ArrayList<>();
 
         final TextView sensor_xzy = view.findViewById(R.id.tv_acceleration_xyz);
 
@@ -81,7 +106,28 @@ public class MonitoringFragment extends Fragment {
                     sensor_xzy.setText(
                             "x:" + accelerationInformation.getX() + " y " + accelerationInformation.getY() + " z "+accelerationInformation.getZ()
                     ); // ACHTUNG: string in stringfile extrahieren!
+                    x_values.add(new BarEntry(accelerationInformation.getX(),0));
+                    y_values.add(new BarEntry(accelerationInformation.getY(),1));
+                    z_values.add(new BarEntry(accelerationInformation.getZ(),2));
 
+
+
+
+
+                    BarDataSet barDataSet_x = new BarDataSet(x_values, "x-Values");
+                    BarDataSet barDataSet_y = new BarDataSet(y_values, "y-Values");
+                    BarDataSet barDataSet_z = new BarDataSet(z_values, "z-Values");
+
+                    dataSet.add(barDataSet_x);
+                    dataSet.add(barDataSet_y);
+                    dataSet.add(barDataSet_z);
+
+                    barChart.animateY(5000);
+                    BarData barData = new BarData(barDataSet_x,barDataSet_y,barDataSet_z);
+                    barDataSet_x.setColors(ColorTemplate.COLORFUL_COLORS);
+                    barDataSet_y.setColors(ColorTemplate.COLORFUL_COLORS);
+                    barDataSet_z.setColors(ColorTemplate.COLORFUL_COLORS);
+                    barChart.setData(barData);
                 });
 
             }
