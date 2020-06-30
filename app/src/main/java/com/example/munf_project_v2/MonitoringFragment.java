@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class MonitoringFragment extends Fragment {
     @Nullable
@@ -19,6 +21,13 @@ public class MonitoringFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        final NavController controller = Navigation.findNavController(view);
+        view.findViewById(R.id.button_start).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                controller.navigate(MonitoringFragmentDirections.actionMonitoringFragmentToFeedbackFragment());
+
+            }
+        });
     }
 }

@@ -19,14 +19,5 @@ public class FeedbackFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        final NavController navController = Navigation.findNavController(view);
-        view.findViewById(R.id.button_start).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-    }
 }
