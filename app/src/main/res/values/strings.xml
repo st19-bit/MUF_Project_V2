@@ -4,4 +4,7 @@
     <string name="sensorwerte_x_y_z">Sensorwerte: x,y,z</string>
     <string name="you_want_feedback">You want Feedback?</string>
     <string name="you_want_old_measurements">You want old Measurements?</string>
+    <string name="feedback_x_achse">Feedback X-Achse</string>
+    <string name="feedback_y_achse">Feedback Y-Achse</string>
+    <string name="feedback_z_achse">Feedback Z-Achse</string>
 </resources>

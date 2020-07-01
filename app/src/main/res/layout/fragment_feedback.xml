@@ -14,4 +14,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/liveChart_x"
+        android:layout_width="match_parent"
+        android:layout_height="150dip" />
+    <TextView
+        android:id="@+id/tv_feedback_x"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/feedback_x_achse" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/liveChart_y"
+        android:layout_width="match_parent"
+        android:layout_height="150dip" />
+    <TextView
+        android:id="@+id/tv_feedback_y"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/feedback_y_achse" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/liveChart_z"
+        android:layout_width="match_parent"
+        android:layout_height="150dip" />
+    <TextView
+        android:id="@+id/tv_feedback_z"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/feedback_z_achse" />
 </LinearLayout>

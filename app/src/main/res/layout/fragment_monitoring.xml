@@ -18,7 +18,7 @@
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/livedata_barchart"
         android:layout_width="match_parent"
-        android:layout_height="300dip"/>
+        android:layout_height="250dip"/>
 
     <Button
         android:id="@+id/button_to_feedback"
