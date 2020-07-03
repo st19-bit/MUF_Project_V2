@@ -19,13 +19,17 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 public class FeedbackFragment extends Fragment {
+
     private SensorViewModel sensorViewModel;
+
     int x_abschnitt = 0;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,7 +54,6 @@ public class FeedbackFragment extends Fragment {
         final TextView feedback_x = view.findViewById(R.id.tv_feedback_x);
         final TextView feedback_y = view.findViewById(R.id.tv_feedback_y);
         final TextView feedback_z = view.findViewById(R.id.tv_feedback_z);
-
 
 
         LineChart lineChart_x = view.findViewById(R.id.liveChart_x);
@@ -83,9 +86,10 @@ public class FeedbackFragment extends Fragment {
                                 .getApplication()))
                 .get(SensorViewModel.class);
 
-        sensorViewModel.accelerationLiveData.observe(getViewLifecycleOwner(), (accelerationInformation)->{
+        sensorViewModel.accelerationLiveData.observe(getViewLifecycleOwner(),(accelerationInformation)->{
             sensor_xyz.setText(
                     "x:" + accelerationInformation.getX() + " y " + accelerationInformation.getY() + " z "+accelerationInformation.getZ()
+                    // UNNÖTIG - weg?
             ); // ACHTUNG: string in stringfile extrahieren!
 
             x_values.add(new Entry(x_abschnitt,accelerationInformation.getX()));
@@ -105,11 +109,13 @@ public class FeedbackFragment extends Fragment {
                 lineDataSet_x.setDrawValues(true);
 
                 feedback_x.setText("Deine Beschleunigungswerte sind zu hoch!");
+                feedback_x.setBackgroundColor(Color.RED);
 
                 // AUDIO FEEDBACK einbinden?
             }
             else{
                 feedback_x.setText("Du hast eine gute Beschleunigung. Weiter so!");
+                feedback_x.setBackgroundColor(Color.WHITE);
             }
 
 
@@ -124,11 +130,13 @@ public class FeedbackFragment extends Fragment {
                 lineDataSet_y.setDrawValues(true);
 
                 feedback_y.setText("Deine Beschleunigungswerte sind zu hoch!");
+                feedback_y.setBackgroundColor(Color.RED);
 
                 // AUDIO FEEDBACK einbinden?
             }
             else{
                 feedback_y.setText("Du hast eine gute Beschleunigung. Weiter so!");
+                feedback_y.setBackgroundColor(Color.WHITE);
             }
 
             LineDataSet lineDataSet_z = new LineDataSet(z_values, "a");
@@ -142,11 +150,13 @@ public class FeedbackFragment extends Fragment {
                 lineDataSet_z.setDrawValues(true);
 
                 feedback_z.setText("Deine Beschleunigungswerte sind zu hoch!");
+                feedback_z.setBackgroundColor(Color.RED);
 
                 // AUDIO FEEDBACK einbinden?
             }
             else{
                 feedback_z.setText("Du hast eine gute Beschleunigung. Weiter so!");
+                feedback_z.setBackgroundColor(Color.WHITE);
             }
 
             LineData data_x = new LineData(lineDataSet_x);
@@ -162,6 +172,9 @@ public class FeedbackFragment extends Fragment {
             lineChart_z.setData(data_z);
             lineChart_z.invalidate();
 
+
         });
     }
+
+
 }

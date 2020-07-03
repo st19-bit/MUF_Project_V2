@@ -7,7 +7,19 @@
         android:id="@+id/button_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/start" />
+        android:text="&#9654;" />
+
+    <Button
+        android:id="@+id/button_stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="&#9632;" />
+
+    <Button
+        android:id="@+id/button_save_to_DB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_to_db" />
 
     <TextView
         android:id="@+id/tv_acceleration_xyz"
