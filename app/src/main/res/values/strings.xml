@@ -1,13 +1,20 @@
 <resources>
     <string name="app_name">MunF_Project_v2</string>
     <string name="start">Start/Stop Measurement</string>
-    <string name="sensorwerte_x_y_z">Sensorwerte: x,y,z</string>
-    <string name="you_want_feedback">You want Feedback?</string>
-    <string name="you_want_old_measurements">You want old Measurements?</string>
-    <string name="feedback_x_achse">Feedback X-Achse</string>
-    <string name="feedback_y_achse">Feedback Y-Achse</string>
-    <string name="feedback_z_achse">Feedback Z-Achse</string>
+    <string name="sensorwerte_x_y_z">Sensorwerte: x, y, z</string>
+    <string name="you_want_feedback">Press to get some feedback</string>
+    <string name="you_want_old_measurements">Press to review an old measurement</string>
+    <string name="feedback_x_achse">x-Axis</string>
+    <string name="feedback_y_achse">y-Axis</string>
+    <string name="feedback_z_achse">z-Axis</string>
     <string name="save_to_db">Save to DB</string>
     <string name="old_measurements">Old Measurements</string>
-    <string name="start_measurement">Start measurement</string>
+    <string name="save_measurement">Press to save your measurement</string>
+    <string name="new_measurement">New Measurement</string>
+    <string name="play">▶</string>
+    <string name="stop">■</string>
+    <string name="start_measurement">start_measurement</string>
+    <string name="feedback_view">Feedback View</string>
+    <string name="acceleration_measurement">Acceleration Measurement</string>
+    <string name="start_new_measurement">Start new measurement</string>
 </resources>
