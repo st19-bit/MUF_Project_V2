@@ -7,13 +7,13 @@
         android:id="@+id/button_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="&#9654;" />
+        android:text="@string/start_icon" />
 
     <Button
         android:id="@+id/button_stop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="&#9632;" />
+        android:text="@string/stop_icon" />
 
     <Button
         android:id="@+id/button_save_to_DB"
@@ -21,11 +21,6 @@
         android:layout_height="wrap_content"
         android:text="@string/save_to_db" />
 
-    <TextView
-        android:id="@+id/tv_acceleration_xyz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sensorwerte_x_y_z" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/livedata_barchart"

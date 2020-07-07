@@ -70,7 +70,6 @@ public class MonitoringFragment extends Fragment {
 
         // ++++++++++++++ BARCHART +++++++++++++
 
-        final TextView sensor_xzy = view.findViewById(R.id.tv_acceleration_xyz);
 
         sensorViewModel = new ViewModelProvider(this,
                 ViewModelProvider
@@ -102,7 +101,6 @@ public class MonitoringFragment extends Fragment {
         });
 
 
-        // TODO: start & stop der Messung implementieren + darstellung der Werte
         button_start.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -115,9 +113,7 @@ public class MonitoringFragment extends Fragment {
                 // sonst hätte man den observer nicht mehr unregistern können, wenn man den start button mehr als 1x drückt
                 if(observer == null) {
                     observer = (accelerationInformation) -> {
-//                    sensor_xzy.setText(
-//                            "x:" + accelerationInformation.getX() + " y " + accelerationInformation.getY() + " z "+accelerationInformation.getZ()
-//                    ); // ACHTUNG: string in stringfile extrahieren!
+
 
                         entries.clear();
 
@@ -126,8 +122,9 @@ public class MonitoringFragment extends Fragment {
                         entries.add(new BarEntry(2, accelerationInformation.getZ()));
 
                         BarDataSet barDataSet = new BarDataSet(entries, "values");
+                        barDataSet.setDrawValues(true);
+
                         BarData barData = new BarData();
-                        barData.setDrawValues(false); // ?
                         barData.addDataSet(barDataSet);
 
                         // Achsen schön darstellen:
@@ -142,7 +139,6 @@ public class MonitoringFragment extends Fragment {
 
                         barChart.setData(barData);
                         barChart.invalidate();
-                        barChart.setDrawValueAboveBar(false); // ?
                     };
 
                 sensorViewModel.accelerationLiveData.observe(getViewLifecycleOwner(),observer);
