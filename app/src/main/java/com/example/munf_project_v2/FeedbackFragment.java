@@ -20,6 +20,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -88,6 +89,7 @@ public class FeedbackFragment extends Fragment {
         ArrayList<Entry> y_values = new ArrayList<Entry>();
         ArrayList<Entry> z_values = new ArrayList<Entry>();
 
+
         sensorViewModel = new ViewModelProvider(this,
                 ViewModelProvider
                         .AndroidViewModelFactory
@@ -105,6 +107,7 @@ public class FeedbackFragment extends Fragment {
             y_values.add(new Entry(x_abschnitt, accelerationInformation.getY()));
             z_values.add(new Entry(x_abschnitt, accelerationInformation.getZ()));
             x_abschnitt = x_abschnitt + 1;
+
 
             LineDataSet lineDataSet_x = new LineDataSet(x_values, "a");
             lineDataSet_x.setColor(Color.BLUE);

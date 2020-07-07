@@ -16,7 +16,7 @@ public class DatenbankFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_database,container,false);
 
         // IDEE:
-        // in dem Fragment kann man allte Messungen aus der Datenbank heruassuchen und darstellen lassen
+        // in dem Fragment kann man alte Messungen aus der Datenbank heraussuchen und darstellen lassen
 
         return v;
     }
