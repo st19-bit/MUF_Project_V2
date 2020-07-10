@@ -87,7 +87,7 @@ public class MonitoringFragment extends Fragment {
             public void onClick(View v) {
                 controller.navigate(MonitoringFragmentDirections
                         .actionMonitoringFragmentToFeedbackFragment()
-                        .setDisplayString("Hier ist dein Feedback"));
+                        .setDisplayString("Feedback View"));
                 // der Teil ist daweil eigentlich komplett unnötig,
                 // finds aber trotzdem cool dass es geht
             }

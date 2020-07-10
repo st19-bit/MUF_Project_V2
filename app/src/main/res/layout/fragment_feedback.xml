@@ -14,14 +14,12 @@
         android:textSize="20sp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/feedback_view" />
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/tv_feedbacksensor_xyz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/acceleration_measurement"
         android:background="@drawable/oval"
         android:layout_marginBottom="10dp" />
 
@@ -30,33 +28,46 @@
         android:id="@+id/tv_feedback_x"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/feedback_x_achse"
-        android:background="@drawable/oval" />
+        android:layout_marginBottom="5dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_x"
         android:layout_width="match_parent"
         android:layout_height="150dip" />
 
+    <View
+        android:layout_width="370dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="2dp"
+        android:background="#695e59"
+        android:layout_marginTop="10dp" />
+
     <TextView
         android:id="@+id/tv_feedback_y"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/feedback_y_achse"
-        android:background="@drawable/oval" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_y"
         android:layout_width="match_parent"
         android:layout_height="150dip" />
 
+    <View
+        android:layout_width="370dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="2dp"
+        android:background="#695e59"
+        android:layout_marginTop="10dp" />
+
 
     <TextView
         android:id="@+id/tv_feedback_z"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/feedback_z_achse"
-        android:background="@drawable/oval" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_z"

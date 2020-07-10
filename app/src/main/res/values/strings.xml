@@ -18,4 +18,6 @@
     <string name="acceleration_measurement">Acceleration Measurement</string>
     <string name="start_new_measurement">Start new measurement</string>
     <string name="live_sensor_data">Live sensor data</string>
+    <string name="Attention">Attention! Acceleration is too high</string>
+    <string name="Keepgoing">Keep going!</string>
 </resources>

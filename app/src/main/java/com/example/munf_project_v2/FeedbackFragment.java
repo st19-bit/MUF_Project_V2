@@ -58,20 +58,20 @@ public class FeedbackFragment extends Fragment {
 
         LineChart lineChart_x = view.findViewById(R.id.liveChart_x);
         Description desc_x = new Description();
-        desc_x.setText("Feedback Beschleunigung an der X-Achse");
+        desc_x.setText("");
         lineChart_x.setDescription(desc_x);
         lineChart_x.setDrawGridBackground(false);
 
 
         LineChart lineChart_y = view.findViewById(R.id.liveChart_y);
         Description desc_y = new Description();
-        desc_y.setText("Feedback Beschleunigung an der Y-Achse");
+        desc_y.setText("");
         lineChart_y.setDescription(desc_y);
         lineChart_y.setDrawGridBackground(false);
 
         LineChart lineChart_z = view.findViewById(R.id.liveChart_z);
         Description desc_z = new Description();
-        desc_z.setText("Feedback Beschleunigung an der Z-Achse");
+        desc_z.setText("");
         lineChart_z.setDescription(desc_z);
         lineChart_z.setDrawGridBackground(false);
 
@@ -97,49 +97,49 @@ public class FeedbackFragment extends Fragment {
             z_values.add(new Entry(x_abschnitt, accelerationInformation.getZ()));
             x_abschnitt = x_abschnitt + 1;
 
-            LineDataSet lineDataSet_x = new LineDataSet(x_values, "a");
-            lineDataSet_x.setColor(Color.BLUE);
+            LineDataSet lineDataSet_x = new LineDataSet(x_values, "x-axis");
+            lineDataSet_x.setColor(Color.GREEN);
             lineDataSet_x.setDrawCircles(false);
             lineDataSet_x.setDrawCircleHole(false);
             lineDataSet_x.setDrawValues(false);
 
-
-            if(accelerationInformation.getX() > 2){
+            if(accelerationInformation.getY() > 2) {
                 lineDataSet_x.setColor(Color.RED);
                 lineDataSet_x.setDrawValues(true);
 
-                feedback_x.setText("Deine Beschleunigungswerte sind zu hoch!");
-                feedback_x.setBackgroundColor(Color.RED);
-
-                // AUDIO FEEDBACK einbinden?
-            }
-            else{
-                feedback_x.setText("Du hast eine gute Beschleunigung. Weiter so!");
-                feedback_x.setBackgroundColor(Color.WHITE);
+                feedback_x.setText(R.string.Attention);
+                feedback_x.setTextColor(Color.RED);
             }
 
+            else {
+                feedback_x.setText(R.string.Keepgoing);
+                feedback_x.setTextColor(Color.GREEN);
+            }
 
-            LineDataSet lineDataSet_y = new LineDataSet(y_values, "a");
-            lineDataSet_y.setColor(Color.CYAN);
+
+
+            LineDataSet lineDataSet_y = new LineDataSet(y_values, "y-axis");
+            lineDataSet_y.setColor(Color.GREEN);
             lineDataSet_y.setDrawCircles(false);
             lineDataSet_y.setDrawCircleHole(false);
             lineDataSet_y.setDrawValues(false);
 
-            if(accelerationInformation.getY() > 2){
+            if(accelerationInformation.getY() > 2) {
                 lineDataSet_y.setColor(Color.RED);
                 lineDataSet_y.setDrawValues(true);
 
-                feedback_y.setText("Deine Beschleunigungswerte sind zu hoch!");
-                feedback_y.setBackgroundColor(Color.RED);
-
-                // AUDIO FEEDBACK einbinden?
-            }
-            else{
-                feedback_y.setText("Du hast eine gute Beschleunigung. Weiter so!");
-                feedback_y.setBackgroundColor(Color.WHITE);
+                feedback_y.setText(R.string.Attention);
+                feedback_y.setTextColor(Color.RED);
             }
 
-            LineDataSet lineDataSet_z = new LineDataSet(z_values, "a");
+            else {
+                feedback_y.setText(R.string.Keepgoing);
+                feedback_y.setTextColor(Color.GREEN);
+            }
+
+
+
+            LineDataSet lineDataSet_z = new LineDataSet(z_values, "z-axis");
             lineDataSet_z.setColor(Color.GREEN);
             lineDataSet_z.setDrawCircles(false);
             lineDataSet_z.setDrawCircleHole(false);
@@ -149,15 +149,17 @@ public class FeedbackFragment extends Fragment {
                 lineDataSet_z.setColor(Color.RED);
                 lineDataSet_z.setDrawValues(true);
 
-                feedback_z.setText("Deine Beschleunigungswerte sind zu hoch!");
-                feedback_z.setBackgroundColor(Color.RED);
+                feedback_z.setText(R.string.Attention);
+                feedback_z.setTextColor(Color.RED);
 
                 // AUDIO FEEDBACK einbinden?
             }
-            else{
-                feedback_z.setText("Du hast eine gute Beschleunigung. Weiter so!");
-                feedback_z.setBackgroundColor(Color.WHITE);
+
+            else {
+                feedback_z.setText(R.string.Keepgoing);
+                feedback_z.setTextColor(Color.GREEN);
             }
+
 
             LineData data_x = new LineData(lineDataSet_x);
             LineData data_y = new LineData(lineDataSet_y);

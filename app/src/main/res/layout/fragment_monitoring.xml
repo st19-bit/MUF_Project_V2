@@ -33,10 +33,11 @@
         android:layout_weight="1"
         android:layout_marginRight="20dp"
         android:text="@string/play"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:background="@drawable/custom_play_button"
-        android:paddingBottom="2dp"
-        android:paddingTop="0dp" />
+        android:paddingBottom="10dp"
+        android:paddingTop="0dp"
+        android:paddingLeft="4dp"/>
 
 
     <Button
@@ -49,7 +50,7 @@
         android:text="@string/stop"
         android:textSize="30sp"
         android:background="@drawable/custom_stop_button"
-        android:paddingBottom="2dp"
+        android:paddingBottom="3dp"
         android:paddingTop="0dp" />
 
     </LinearLayout>
@@ -60,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save_measurement"
+        android:textSize="15dp"
         android:background="@drawable/oval" />
 
     <TextView
@@ -83,6 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/you_want_feedback"
+        android:textSize="15dp"
         android:background="@drawable/oval"
         android:layout_marginBottom="15dp"/>
 
@@ -91,5 +94,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/you_want_old_measurements"
+        android:textSize="15dp"
         android:background="@drawable/oval" />
 </LinearLayout>
