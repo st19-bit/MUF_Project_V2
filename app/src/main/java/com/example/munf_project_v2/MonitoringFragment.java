@@ -56,6 +56,7 @@ public class MonitoringFragment extends Fragment {
         final Button button_change_to_database = view.findViewById(R.id.button_to_database);
         final Button button_save_to_DB = view.findViewById(R.id.button_save_to_DB);
 
+
         observer = null;
 
 
