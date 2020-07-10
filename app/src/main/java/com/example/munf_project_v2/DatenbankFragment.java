@@ -10,13 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class DatenbankFragment extends Fragment {
+    private AppDatenbank appDatenbank;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_database,container,false);
 
-        // IDEE:
-        // in dem Fragment kann man allte Messungen aus der Datenbank heruassuchen und darstellen lassen
+        AppDatenbank appDatenbank = ((MUFApplication)getActivity().getApplication()).getDatabase();
 
         return v;
     }

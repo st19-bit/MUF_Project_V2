@@ -2,19 +2,27 @@ package com.example.munf_project_v2;
 
 import android.hardware.Sensor;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "acclererationinformation")
 public class AccelerationInformation {
+
+    @PrimaryKey
+    @NonNull
+
+    private String id;
+    private float timestamp;
+
     private Sensor sensor;
     private float x;
     private float y;
     private float z;
 
-    public Sensor getSensor() {
-        return sensor;
-    }
+    public Sensor getSensor() { return sensor; }
 
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
-    }
+    public void setSensor(Sensor sensor) { this.sensor = sensor; }
 
     public float getX() {
         return x;
@@ -46,4 +54,20 @@ public class AccelerationInformation {
         this.z = z;
     }
 
+    @NonNull
+    public String getId() {
+        return id;
+    }
+
+    public void setId(@NonNull String id) {
+        this.id = id;
+    }
+
+    public float getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(float timestamp) {
+        this.timestamp = timestamp;
+    }
 }

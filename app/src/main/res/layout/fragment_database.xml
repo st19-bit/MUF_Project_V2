@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test" />
+
+    <ListView
+        android:id="@+id/Messungen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/statsGraph"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <TextView
+        android:id="@+id/xMean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="xMean" />
+    <TextView
+        android:id="@+id/yMean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="yMean" />
+    <TextView
+        android:id="@+id/zMean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="zMean" />
+
 
 </LinearLayout>

@@ -10,7 +10,8 @@ import android.hardware.SensorManager;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
+
+import java.util.Date;
 
 public class SensorViewModel extends AndroidViewModel {
 
@@ -42,6 +43,7 @@ public class SensorViewModel extends AndroidViewModel {
                         // Datentyp "Sensor" in accelerationInformation hineinbringen um
                         // später Metainformationen vom Sensor (resulution, etc.) einfach zu erhalten
                         accelerationInformation.setSensor(sensorEvent.sensor);
+                        accelerationInformation.setTimestamp((new Date()).getTime() + (sensorEvent.timestamp - System.nanoTime()) / 1000000L);
                         setValue(accelerationInformation);
                         break;
                     case Sensor.TYPE_GRAVITY:
