@@ -17,4 +17,5 @@
     <string name="feedback_view">Feedback View</string>
     <string name="acceleration_measurement">Acceleration Measurement</string>
     <string name="start_new_measurement">Start new measurement</string>
+    <string name="live_sensor_data">Live sensor data</string>
 </resources>

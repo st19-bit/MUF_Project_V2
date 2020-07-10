@@ -5,14 +5,8 @@
     <solid
         android:color="#e23950 " />
 
-    <padding
-        android:bottom="7dp"
-        android:left="7dp"
-        android:right="7dp"
-        android:top="7dp" />
 
-
-    <corners android:radius="21dp" />
+    <corners android:radius="48dp" />
 
     <stroke
         android:width="3.5dp"

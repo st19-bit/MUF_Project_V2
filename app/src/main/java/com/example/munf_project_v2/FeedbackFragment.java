@@ -120,7 +120,7 @@ public class FeedbackFragment extends Fragment {
 
 
             LineDataSet lineDataSet_y = new LineDataSet(y_values, "a");
-            lineDataSet_y.setColor(Color.BLUE);
+            lineDataSet_y.setColor(Color.CYAN);
             lineDataSet_y.setDrawCircles(false);
             lineDataSet_y.setDrawCircleHole(false);
             lineDataSet_y.setDrawValues(false);
@@ -140,7 +140,7 @@ public class FeedbackFragment extends Fragment {
             }
 
             LineDataSet lineDataSet_z = new LineDataSet(z_values, "a");
-            lineDataSet_z.setColor(Color.BLUE);
+            lineDataSet_z.setColor(Color.GREEN);
             lineDataSet_z.setDrawCircles(false);
             lineDataSet_z.setDrawCircleHole(false);
             lineDataSet_z.setDrawValues(false);
