@@ -21,6 +21,13 @@
         android:layout_height="wrap_content"
         android:text="@string/save_to_db" />
 
+    <EditText
+        android:id="@+id/db_input_name"
+        android:text="@string/name"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/livedata_barchart"

@@ -12,4 +12,5 @@
     <string name="start_measurement">Start measurement</string>
     <string name="start_icon">▶</string>
     <string name="stop_icon">■</string>
+    <string name="name">Name</string>
 </resources>
