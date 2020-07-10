@@ -21,6 +21,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -92,7 +93,7 @@ public class MonitoringFragment extends Fragment {
         button_save_to_DB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Userdata u = new Userdata(et_name_db.getText().toString());
+                Userdata u = new Userdata(et_name_db.getText().toString()); //
                 // userViewModel übergeben
                 userViewModel.setUser(u).observe(getViewLifecycleOwner(),userdata -> { // this
                     // obererver registrieren:
@@ -137,6 +138,8 @@ public class MonitoringFragment extends Fragment {
                 // sonst hätte man den observer nicht mehr unregistern können, wenn man den start button mehr als 1x drückt
                 if (observer == null) {
                     observer = (accelerationInformation) -> {
+
+
 
 
                         entries.clear();
