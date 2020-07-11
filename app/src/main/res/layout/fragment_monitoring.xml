@@ -19,7 +19,7 @@
         android:layout_marginBottom="30dp"/>
 
     <LinearLayout
-        android:layout_width="140dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:layout_gravity="center">
@@ -28,8 +28,8 @@
     <Button
         android:id="@+id/button_start"
         android:layout_gravity="center_horizontal"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_weight="1"
         android:layout_marginRight="20dp"
         android:text="@string/play"
@@ -43,8 +43,8 @@
     <Button
         android:id="@+id/button_stop"
         android:layout_gravity="center_horizontal"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_weight="1"
         android:layout_marginLeft="20dp"
         android:text="@string/stop"
@@ -55,14 +55,6 @@
 
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/button_save_to_DB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/save_measurement"
-        android:textSize="15dp"
-        android:background="@drawable/custom_oval_button" />
 
     <TextView
         android:id="@+id/tv_acceleration_xyz"
