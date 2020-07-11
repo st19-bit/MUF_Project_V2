@@ -106,10 +106,15 @@ public class MonitoringFragment extends Fragment {
 
         // TODO: start & stop der Messung implementieren + darstellung der Werte
         button_start.setOnClickListener(new View.OnClickListener(){
+
+
+
             @Override
             public void onClick(View v) {
 
                 // HIER Sensor Daten in eine DB speichern
+
+
 
 
                 // observer registrieren:
