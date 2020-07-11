@@ -168,6 +168,10 @@ public class MonitoringFragment extends Fragment {
         button_stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(mediaBinder == null) return;
+                mediaBinder.play(R.raw.stop);
+
                 sensorViewModel.accelerationLiveData.removeObserver(observer);
 
                 barChart.clear(); // notwendig?
