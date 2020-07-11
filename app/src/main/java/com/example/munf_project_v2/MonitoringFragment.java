@@ -1,7 +1,9 @@
 package com.example.munf_project_v2;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,8 @@ public class MonitoringFragment extends Fragment {
 
     private SensorViewModel sensorViewModel;
     private Observer<AccelerationInformation> observer;
+
+    private MediaServiceConnection mediaServiceConnection = null;
     private MediaService.MediaBinder mediaBinder;
 
 
@@ -81,6 +85,7 @@ public class MonitoringFragment extends Fragment {
                                 .getApplication()))
                 .get(SensorViewModel.class);
 
+
         button_change_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -106,10 +111,18 @@ public class MonitoringFragment extends Fragment {
 
         // TODO: start & stop der Messung implementieren + darstellung der Werte
         button_start.setOnClickListener(new View.OnClickListener(){
+
+
+
             @Override
             public void onClick(View v) {
 
                 // HIER Sensor Daten in eine DB speichern
+
+                if(mediaBinder == null) return;
+                mediaBinder.play(R.raw.start);
+
+
 
 
                 // observer registrieren:
@@ -156,6 +169,10 @@ public class MonitoringFragment extends Fragment {
         button_stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(mediaBinder == null) return;
+                mediaBinder.play(R.raw.stop);
+
                 sensorViewModel.accelerationLiveData.removeObserver(observer);
 
                 barChart.clear(); // notwendig?
@@ -164,6 +181,42 @@ public class MonitoringFragment extends Fragment {
                 observer = null;
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mediaServiceConnection == null) {
+            getActivity().bindService(new Intent(getContext(), MediaService.class),
+                    mediaServiceConnection = new MediaServiceConnection(),
+                    Context.BIND_AUTO_CREATE);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(mediaServiceConnection != null){
+            getActivity().unbindService(mediaServiceConnection);
+            mediaServiceConnection = null;
+        }
+    }
+
+    private final class MediaServiceConnection implements ServiceConnection{
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            mediaBinder = (MediaService.MediaBinder) iBinder;
+
+
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            mediaBinder = null;
+
+        }
     }
 
 }
