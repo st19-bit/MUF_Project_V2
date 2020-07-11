@@ -1,0 +1,186 @@
+Index: app/src/main/res/layout/fragment_monitoring.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_monitoring.xml	(revision f957fa8a05f391234abb4b7e0bbf6e9026c684fb)
++++ app/src/main/res/layout/fragment_monitoring.xml	(date 1593885636423)
+@@ -3,23 +3,36 @@
+     android:orientation="vertical" android:layout_width="match_parent"
+     android:layout_height="match_parent">
+ 
++    <TextView
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="" />
++
+     <Button
+         android:id="@+id/button_start"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:text="&#9654;" />
++        android:layout_gravity="center"
++        android:layout_width="40dp"
++        android:layout_height="40dp"
++        android:text=" &#9654;"
++        android:background="@drawable/custom_play_button" />
++
+ 
+     <Button
+         android:id="@+id/button_stop"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:text="&#9632;" />
++        android:layout_width="40dp"
++        android:layout_height="40dp"
++        android:layout_gravity="center"
++        android:background="@drawable/custom_stop_button"
++        android:text=" &#9632;"
++        android:layout_marginTop="20dp"
++        android:layout_marginBottom="20dp"/>
++
+ 
+     <Button
+         android:id="@+id/button_save_to_DB"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:text="@string/save_to_db" />
++        android:text="@string/save_measurement" />
+ 
+     <TextView
+         android:id="@+id/tv_acceleration_xyz"
+@@ -36,7 +49,8 @@
+         android:id="@+id/button_to_feedback"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:text="@string/you_want_feedback" />
++        android:text="@string/you_want_feedback"
++        android:layout_marginBottom="10dp"/>
+ 
+     <Button
+         android:id="@+id/button_to_database"
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision f957fa8a05f391234abb4b7e0bbf6e9026c684fb)
++++ build.gradle	(date 1593879988439)
+@@ -8,7 +8,7 @@
+         
+     }
+     dependencies {
+-        classpath 'com.android.tools.build:gradle:3.6.3'
++        classpath 'com.android.tools.build:gradle:4.0.0'
+         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0"
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision f957fa8a05f391234abb4b7e0bbf6e9026c684fb)
++++ app/src/main/res/values/strings.xml	(date 1593885108888)
+@@ -2,12 +2,13 @@
+     <string name="app_name">MunF_Project_v2</string>
+     <string name="start">Start/Stop Measurement</string>
+     <string name="sensorwerte_x_y_z">Sensorwerte: x,y,z</string>
+-    <string name="you_want_feedback">You want Feedback?</string>
+-    <string name="you_want_old_measurements">You want old Measurements?</string>
++    <string name="you_want_feedback">Do you want some feedback?</string>
++    <string name="you_want_old_measurements">Do you want to review your old measurement?</string>
+     <string name="feedback_x_achse">Feedback X-Achse</string>
+     <string name="feedback_y_achse">Feedback Y-Achse</string>
+     <string name="feedback_z_achse">Feedback Z-Achse</string>
+     <string name="save_to_db">Save to DB</string>
+     <string name="old_measurements">Old Measurements</string>
+     <string name="start_measurement">Start measurement</string>
++    <string name="save_measurement">Save your Measurement</string>
+ </resources>
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/jarRepositories.xml	(date 1593880149372)
++++ .idea/jarRepositories.xml	(date 1593880149372)
+@@ -0,0 +1,30 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="BintrayJCenter" />
++      <option name="name" value="BintrayJCenter" />
++      <option name="url" value="https://jcenter.bintray.com/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="Google" />
++      <option name="name" value="Google" />
++      <option name="url" value="https://dl.google.com/dl/android/maven2/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="maven" />
++      <option name="name" value="maven" />
++      <option name="url" value="https://jitpack.io" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision f957fa8a05f391234abb4b7e0bbf6e9026c684fb)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1593879988447)
+@@ -1,6 +1,6 @@
+-#Fri Jun 26 14:13:27 CEST 2020
++#Sat Jul 04 18:26:28 CEST 2020
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.4-all.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.1.1-all.zip
+Index: app/src/main/java/com/example/munf_project_v2/HostActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/munf_project_v2/HostActivity.java	(revision f957fa8a05f391234abb4b7e0bbf6e9026c684fb)
++++ app/src/main/java/com/example/munf_project_v2/HostActivity.java	(date 1593882098761)
+@@ -1,11 +1,13 @@
+ package com.example.munf_project_v2;
+ 
+ import android.os.Bundle;
++import android.widget.Button;
+ 
+ import androidx.annotation.Nullable;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+ public class HostActivity extends AppCompatActivity {
++
+     @Override
+     protected void onCreate(@Nullable Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/.name	(date 1593879969736)
++++ .idea/.name	(date 1593879969736)
+@@ -0,0 +1,1 @@
++MunF_Project_v2
+\ No newline at end of file

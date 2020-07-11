@@ -2,25 +2,11 @@ package com.example.munf_project_v2;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.DropBoxManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,10 +16,25 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
+
+import java.util.ArrayList;
+
+
 public class MonitoringFragment extends Fragment {
 
     private SensorViewModel sensorViewModel;
     private Observer<AccelerationInformation> observer;
+    private MediaService.MediaBinder mediaBinder;
 
 
     @Nullable
@@ -55,13 +56,14 @@ public class MonitoringFragment extends Fragment {
         final Button button_change_to_database = view.findViewById(R.id.button_to_database);
         final Button button_save_to_DB = view.findViewById(R.id.button_save_to_DB);
 
+
         observer = null;
 
 
         // ++++++++++++ BARCHART ++++++++++++
         final BarChart barChart = view.findViewById(R.id.livedata_barchart);
         barChart.setNoDataText(getString(R.string.start_measurement));
-        barChart.setBackgroundColor(Color.YELLOW);
+        barChart.setBackgroundColor(Color.WHITE);
         // Setup für Barchart
 
         ArrayList<BarEntry> entries = new ArrayList<>();
@@ -85,7 +87,7 @@ public class MonitoringFragment extends Fragment {
             public void onClick(View v) {
                 controller.navigate(MonitoringFragmentDirections
                         .actionMonitoringFragmentToFeedbackFragment()
-                        .setDisplayString("Hier ist dein Feedback"));
+                        .setDisplayString("Feedback View"));
                 // der Teil ist daweil eigentlich komplett unnötig,
                 // finds aber trotzdem cool dass es geht
             }

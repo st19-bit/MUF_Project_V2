@@ -2,7 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/monitoringFragment">
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_start"
+        android:id="@+id/startFragment"
+        android:name="com.example.munf_project_v2.StartFragment"
+        android:label="StartFragment" >
+        <action
+            android:id="@+id/action_startFragment_to_monitoringFragment"
+            app:destination="@id/monitoringFragment" />
+    </fragment>
 
     <fragment
         tools:layout="@layout/fragment_monitoring"
