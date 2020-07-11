@@ -1,7 +1,9 @@
 package com.example.munf_project_v2;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -169,6 +171,42 @@ public class MonitoringFragment extends Fragment {
                 observer = null;
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mediaServiceConnection == null) {
+            getActivity().bindService(new Intent(getContext(), MediaService.class),
+                    mediaServiceConnection = new MediaServiceConnection(),
+                    Context.BIND_AUTO_CREATE);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(mediaServiceConnection != null){
+            getActivity().unbindService(mediaServiceConnection);
+            mediaServiceConnection = null;
+        }
+    }
+
+    private final class MediaServiceConnection implements ServiceConnection{
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            mediaBinder = (MediaService.MediaBinder) iBinder;
+
+
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            mediaBinder = null;
+
+        }
     }
 
 }
