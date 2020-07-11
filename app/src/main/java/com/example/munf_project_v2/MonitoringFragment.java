@@ -27,6 +27,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -66,7 +67,6 @@ public class MonitoringFragment extends Fragment {
         final Button button_stop = view.findViewById(R.id.button_stop);
         final Button button_change_fragment = view.findViewById(R.id.button_to_feedback);
         final Button button_change_to_database = view.findViewById(R.id.button_to_database);
-        final Button button_save_to_DB = view.findViewById(R.id.button_save_to_DB);
 
 
         observer = null;
@@ -164,7 +164,8 @@ public class MonitoringFragment extends Fragment {
                         count=count+1;
                         // eingabe in die Datenbank
                         senViewModel.setSensor(tempdepot);
-                        sensor_xzy.setText("Measurement is recording." );
+
+                        sensor_xzy.setText("Recording..." );
 
                     };
 
@@ -183,11 +184,13 @@ public class MonitoringFragment extends Fragment {
                 // entfernt dann die letzten Werte aus dem Graf
 
                 observer = null;
-                sensor_xzy.setText("Measurement stopped." );
+                sensor_xzy.setText("Recording has stopped ... Saving measurement to databse" );
                 count = 0;
                 datalist.clear();
+
             }
         });
+
     }
 
 }
