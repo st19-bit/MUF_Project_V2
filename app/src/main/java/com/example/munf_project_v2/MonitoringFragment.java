@@ -104,9 +104,15 @@ public class MonitoringFragment extends Fragment {
             public void onClick(View v) {
                 controller.navigate(MonitoringFragmentDirections
                         .actionMonitoringFragmentToFeedbackFragment()
-                        .setDisplayString("Feedback View"));
+                        .setDisplayString("Feedback View"));sensorViewModel.accelerationLiveData.removeObserver(observer);
                 // der Teil ist daweil eigentlich komplett unnötig,
                 // finds aber trotzdem cool dass es geht
+                barChart.clear(); // notwendig?
+                // entfernt dann die letzten Werte aus dem Graf
+                observer = null;
+                count = 0;
+                datalist.clear();
+
             }
 
         });
