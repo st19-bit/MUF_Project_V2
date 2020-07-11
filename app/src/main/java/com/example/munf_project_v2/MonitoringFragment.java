@@ -2,6 +2,7 @@ package com.example.munf_project_v2;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +34,20 @@ import java.util.ArrayList;
 public class MonitoringFragment extends Fragment {
 
     private SensorViewModel sensorViewModel;
+    private SenViewModel senViewModel;
     private Observer<AccelerationInformation> observer;
     private MediaService.MediaBinder mediaBinder;
+    private ArrayList<Depot> datalist;
+    private int count = 0;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        senViewModel = new ViewModelProvider(
+                getActivity(),
+                ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())
+        ).get(SenViewModel.class);
+    }
 
     @Nullable
     @Override
@@ -58,6 +70,7 @@ public class MonitoringFragment extends Fragment {
 
 
         observer = null;
+        datalist = new ArrayList<>();
 
 
         // ++++++++++++ BARCHART ++++++++++++
@@ -145,6 +158,14 @@ public class MonitoringFragment extends Fragment {
                         barChart.setData(barData);
                         barChart.invalidate();
                         barChart.setDrawValueAboveBar(false); // ?
+
+                        Depot tempdepot = new Depot(count, accelerationInformation.getX(),accelerationInformation.getY(),accelerationInformation.getZ(), System.currentTimeMillis());
+                        datalist.add(tempdepot);
+                        count=count+1;
+                        // eingabe in die Datenbank
+                        senViewModel.setSensor(tempdepot);
+                        sensor_xzy.setText("Measurement is recording." );
+
                     };
 
                 sensorViewModel.accelerationLiveData.observe(getViewLifecycleOwner(),observer);
@@ -162,6 +183,9 @@ public class MonitoringFragment extends Fragment {
                 // entfernt dann die letzten Werte aus dem Graf
 
                 observer = null;
+                sensor_xzy.setText("Measurement stopped." );
+                count = 0;
+                datalist.clear();
             }
         });
     }
