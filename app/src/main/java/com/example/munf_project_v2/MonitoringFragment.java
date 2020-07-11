@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,9 @@ public class MonitoringFragment extends Fragment {
 
     private MediaServiceConnection mediaServiceConnection = null;
     private MediaService.MediaBinder mediaBinder;
+
+    private TextToSpeech textToSpeech;
+
     private ArrayList<Depot> datalist;
     private int count = 0;
 
@@ -215,6 +219,21 @@ public class MonitoringFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onStart() {
+//        super.onStart();
+//        textToSpeech = new TextToSpeech(this, status -> {
+//            say.setEnabled(true);
+//
+//        });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        textToSpeech.shutdown();
     }
 
     @Override
