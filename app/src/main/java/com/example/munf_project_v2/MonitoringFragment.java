@@ -36,6 +36,8 @@ public class MonitoringFragment extends Fragment {
 
     private SensorViewModel sensorViewModel;
     private Observer<AccelerationInformation> observer;
+
+    private MediaServiceConnection mediaServiceConnection = null;
     private MediaService.MediaBinder mediaBinder;
 
 
