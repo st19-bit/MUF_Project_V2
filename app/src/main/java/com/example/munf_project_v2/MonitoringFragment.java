@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ import android.content.ServiceConnection;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 
 public class MonitoringFragment extends Fragment {
@@ -41,6 +43,9 @@ public class MonitoringFragment extends Fragment {
 
     private MediaServiceConnection mediaServiceConnection = null;
     private MediaService.MediaBinder mediaBinder;
+
+    private TextToSpeech textToSpeech;
+
     private ArrayList<Depot> datalist;
     private int count = 0;
 
@@ -98,123 +103,124 @@ public class MonitoringFragment extends Fragment {
                 .get(SensorViewModel.class);
 
 
-        button_change_fragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-                controller.navigate(MonitoringFragmentDirections
-                        .actionMonitoringFragmentToFeedbackFragment()
-                        .setDisplayString("Feedback View"));sensorViewModel.accelerationLiveData.removeObserver(observer);
-                // der Teil ist daweil eigentlich komplett unnötig,
-                // finds aber trotzdem cool dass es geht
-                barChart.clear(); // notwendig?
-                // entfernt dann die letzten Werte aus dem Graf
-                observer = null;
-                count = 0;
-                datalist.clear();
-
-            }
+        button_change_fragment.setOnClickListener(v -> {
+            controller.navigate(MonitoringFragmentDirections
+                    .actionMonitoringFragmentToFeedbackFragment()
+                    .setDisplayString("Feedback View"));sensorViewModel.accelerationLiveData.removeObserver(observer);
+            // der Teil ist daweil eigentlich komplett unnötig,
+            // finds aber trotzdem cool dass es geht
+            barChart.clear(); 
+            // entfernt dann die letzten Werte aus dem Graf
+            observer = null;
+            count = 0;
+            datalist.clear();
 
         });
 
 
-        button_change_to_database.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                controller.navigate(MonitoringFragmentDirections
-                        .actionMonitoringFragmentToDatenbankFragment());
-            }
-        });
+        button_change_to_database.setOnClickListener(view12 -> controller.navigate(MonitoringFragmentDirections
+                .actionMonitoringFragmentToDatenbankFragment()));
 
 
         // TODO: start & stop der Messung implementieren + darstellung der Werte
-        button_start.setOnClickListener(new View.OnClickListener(){
+        button_start.setOnClickListener(v -> {
+
+            // HIER Sensor Daten in eine DB speichern
+
+            sensor_xzy.setText(R.string.recording );
+
+            if(mediaBinder == null) return;
+            mediaBinder.play(R.raw.start);
+
+            String toSay = sensor_xzy.getText().toString();
+            textToSpeech.speak(toSay,
+                    TextToSpeech.QUEUE_ADD,
+                    null,
+                    UUID.randomUUID().toString());
 
 
 
-            @Override
-            public void onClick(View v) {
 
-                // HIER Sensor Daten in eine DB speichern
+            // observer registrieren:
+            if(observer == null) {
+                observer = (accelerationInformation) -> {
+//
+                    entries.clear();
 
-                if(mediaBinder == null) return;
-                mediaBinder.play(R.raw.start);
+                    entries.add(new BarEntry(0, accelerationInformation.getX()));
+                    entries.add(new BarEntry(1, accelerationInformation.getY()));
+                    entries.add(new BarEntry(2, accelerationInformation.getZ()));
+
+                    BarDataSet barDataSet = new BarDataSet(entries, "values");
+                    BarData barData = new BarData();
+                    barData.setDrawValues(false); // ?
+                    barData.addDataSet(barDataSet);
+
+                    xAxisLabel.add("x-axis");
+                    xAxisLabel.add("y-axis");
+                    xAxisLabel.add("z-axis");
+
+                    XAxis xAxis = barChart.getXAxis();
+                    xAxis.setValueFormatter(new IndexAxisValueFormatter());
+
+                    barChart.setData(barData);
+                    barChart.invalidate();
+                    barChart.setDrawValueAboveBar(false); // ?
+
+                    Depot tempdepot = new Depot(count, accelerationInformation.getX(),accelerationInformation.getY(),accelerationInformation.getZ(), System.currentTimeMillis());
+                    datalist.add(tempdepot);
+                    count=count+1;
+                    // eingabe in die Datenbank
+                    senViewModel.setSensor(tempdepot);
 
 
+                };
 
-
-                // observer registrieren:
-                // observer == null:
-                // sonst hätte man den observer nicht mehr unregistern können, wenn man den start button mehr als 1x drückt
-                if(observer == null) {
-                    observer = (accelerationInformation) -> {
-//                    sensor_xzy.setText(
-//                            "x:" + accelerationInformation.getX() + " y " + accelerationInformation.getY() + " z "+accelerationInformation.getZ()
-//                    ); // ACHTUNG: string in stringfile extrahieren!
-
-                        entries.clear();
-
-                        entries.add(new BarEntry(0, accelerationInformation.getX()));
-                        entries.add(new BarEntry(1, accelerationInformation.getY()));
-                        entries.add(new BarEntry(2, accelerationInformation.getZ()));
-
-                        BarDataSet barDataSet = new BarDataSet(entries, "values");
-                        BarData barData = new BarData();
-                        barData.setDrawValues(false); // ?
-                        barData.addDataSet(barDataSet);
-
-                        // Achsen schön darstellen:
-                        // https://www.youtube.com/watch?v=0BsPW2DpQgE
-                        // https://www.youtube.com/watch?v=sBqW770P3_U
-                        xAxisLabel.add("x-axis");
-                        xAxisLabel.add("y-axis");
-                        xAxisLabel.add("z-axis");
-
-                        XAxis xAxis = barChart.getXAxis();
-                        xAxis.setValueFormatter(new IndexAxisValueFormatter());
-
-                        barChart.setData(barData);
-                        barChart.invalidate();
-                        barChart.setDrawValueAboveBar(false); // ?
-
-                        Depot tempdepot = new Depot(count, accelerationInformation.getX(),accelerationInformation.getY(),accelerationInformation.getZ(), System.currentTimeMillis());
-                        datalist.add(tempdepot);
-                        count=count+1;
-                        // eingabe in die Datenbank
-                        senViewModel.setSensor(tempdepot);
-
-                        sensor_xzy.setText("Recording..." );
-
-                    };
-
-                sensorViewModel.accelerationLiveData.observe(getViewLifecycleOwner(),observer);
-
-                }
-            }
-        });
-
-        button_stop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(mediaBinder == null) return;
-                mediaBinder.play(R.raw.stop);
-
-                sensorViewModel.accelerationLiveData.removeObserver(observer);
-
-                Toast.makeText(getContext(), "Saving to database ...", Toast.LENGTH_SHORT).show();
-
-                barChart.clear(); // notwendig?
-                // entfernt dann die letzten Werte aus dem Graf
-
-                observer = null;
-                sensor_xzy.setText("Recording has stopped" );
-                count = 0;
-                datalist.clear();
+            sensorViewModel.accelerationLiveData.observe(getViewLifecycleOwner(),observer);
 
             }
         });
 
+        button_stop.setOnClickListener(view1 -> {
+
+            if(mediaBinder == null) return;
+            mediaBinder.play(R.raw.stop);
+
+            sensorViewModel.accelerationLiveData.removeObserver(observer);
+
+            Toast.makeText(getContext(), "Saving to database ...", Toast.LENGTH_SHORT).show();
+
+            // barChart.clear(); // notwendig?
+            // entfernt dann die letzten Werte aus dem Graf
+
+            observer = null;
+            sensor_xzy.setText(R.string.recording_stoped );
+
+            String toSay = sensor_xzy.getText().toString();
+            textToSpeech.speak(toSay,
+                    TextToSpeech.QUEUE_ADD,
+                    null,
+                    UUID.randomUUID().toString());
+
+            count = 0;
+            datalist.clear();
+
+        });
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        textToSpeech = new TextToSpeech(getContext(), status -> {
+
+        });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        textToSpeech.shutdown();
     }
 
     @Override
@@ -241,8 +247,6 @@ public class MonitoringFragment extends Fragment {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             mediaBinder = (MediaService.MediaBinder) iBinder;
-
-
 
         }
 

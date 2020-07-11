@@ -20,4 +20,6 @@
     <string name="live_sensor_data">Live sensor data</string>
     <string name="Attention">Attention! Acceleration is too high</string>
     <string name="Keepgoing">Keep going!</string>
+    <string name="recording">Recording...</string>
+    <string name="recording_stoped">Recording has stopped</string>
 </resources>
