@@ -28,6 +28,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -173,6 +174,8 @@ public class MonitoringFragment extends Fragment {
                 mediaBinder.play(R.raw.stop);
 
                 sensorViewModel.accelerationLiveData.removeObserver(observer);
+
+                Toast.makeText(getContext(), "Saving to database ...", Toast.LENGTH_SHORT).show();
 
                 barChart.clear(); // notwendig?
                 // entfernt dann die letzten Werte aus dem Graf
