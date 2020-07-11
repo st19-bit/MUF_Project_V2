@@ -1,7 +1,12 @@
 package com.example.munf_project_v2;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +32,9 @@ import androidx.navigation.Navigation;
 public class FeedbackFragment extends Fragment {
 
     private SensorViewModel sensorViewModel;
+
+    private MediaServiceConnection mediaServiceConnection = null;
+    private MediaService.MediaBinder mediaBinder;
 
     int x_abschnitt = 0;
 
@@ -103,7 +111,11 @@ public class FeedbackFragment extends Fragment {
             lineDataSet_x.setDrawCircleHole(false);
             lineDataSet_x.setDrawValues(false);
 
-            if(accelerationInformation.getY() > 2) {
+            if(accelerationInformation.getX() > 2) {
+
+                if(mediaBinder == null) return;
+                mediaBinder.play(R.raw.ding);
+
                 lineDataSet_x.setColor(Color.RED);
                 lineDataSet_x.setDrawValues(true);
 
@@ -125,6 +137,10 @@ public class FeedbackFragment extends Fragment {
             lineDataSet_y.setDrawValues(false);
 
             if(accelerationInformation.getY() > 2) {
+
+                if(mediaBinder == null) return;
+                mediaBinder.play(R.raw.ding);
+
                 lineDataSet_y.setColor(Color.RED);
                 lineDataSet_y.setDrawValues(true);
 
@@ -146,6 +162,10 @@ public class FeedbackFragment extends Fragment {
             lineDataSet_z.setDrawValues(false);
 
             if(accelerationInformation.getZ() > 2){
+
+                if(mediaBinder == null) return;
+                mediaBinder.play(R.raw.ding);
+
                 lineDataSet_z.setColor(Color.RED);
                 lineDataSet_z.setDrawValues(true);
 
@@ -177,6 +197,44 @@ public class FeedbackFragment extends Fragment {
 
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mediaServiceConnection == null) {
+            getActivity().bindService(new Intent(getContext(), MediaService.class),
+                    mediaServiceConnection = new MediaServiceConnection(),
+                    Context.BIND_AUTO_CREATE);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(mediaServiceConnection != null){
+            getActivity().unbindService(mediaServiceConnection);
+            mediaServiceConnection = null;
+        }
+    }
+
+    private final class MediaServiceConnection implements ServiceConnection {
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            mediaBinder = (MediaService.MediaBinder) iBinder;
+
+
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            mediaBinder = null;
+
+        }
+    }
+
+
 
 
 }

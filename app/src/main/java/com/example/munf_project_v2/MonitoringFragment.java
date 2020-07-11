@@ -85,6 +85,7 @@ public class MonitoringFragment extends Fragment {
                                 .getApplication()))
                 .get(SensorViewModel.class);
 
+
         button_change_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
 
