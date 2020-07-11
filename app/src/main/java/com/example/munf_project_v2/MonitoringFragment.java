@@ -208,7 +208,7 @@ public class MonitoringFragment extends Fragment {
                 // entfernt dann die letzten Werte aus dem Graf
 
                 observer = null;
-                sensor_xzy.setText("Recording has stopped ... Saving measurement to databse" );
+                sensor_xzy.setText("Recording has stopped" );
                 count = 0;
                 datalist.clear();
 
