@@ -118,6 +118,9 @@ public class MonitoringFragment extends Fragment {
 
                 // HIER Sensor Daten in eine DB speichern
 
+                if(mediaBinder == null) return;
+                mediaBinder.play(R.raw.start);
+
 
 
 
