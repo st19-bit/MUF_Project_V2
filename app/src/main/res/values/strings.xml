@@ -3,7 +3,7 @@
     <string name="start">Start/Stop Measurement</string>
     <string name="sensorwerte_x_y_z">Sensorwerte: x, y, z</string>
     <string name="you_want_feedback">Press to get some feedback</string>
-    <string name="you_want_old_measurements">Press to review an old measurement</string>
+    <string name="you_want_old_measurements">Press to review your old measurement</string>
     <string name="feedback_x_achse">x-Axis</string>
     <string name="feedback_y_achse">y-Axis</string>
     <string name="feedback_z_achse">z-Axis</string>
@@ -24,4 +24,5 @@
     <string name="recording_stoped">Recording has stopped</string>
     <string name="mm_dd_yyyy">MM/DD/YYYY</string>
     <string name="enter_your_username">Enter your username</string>
+    <string name="database">Database</string>
 </resources>

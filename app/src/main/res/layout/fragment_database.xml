@@ -5,12 +5,61 @@
     android:layout_height="match_parent"
     android:background="#a49189">
 
+    <TextView
+        android:id="@+id/database_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/database"
+        android:textColor="#695e59"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"/>
+
+    <View
+        android:layout_width="370dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="2dp"
+        android:background="#695e59"
+        android:layout_marginTop="5dp" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/DBChart_x"
+        android:layout_width="match_parent"
+        android:layout_height="150dip" />
+
+    <View
+        android:layout_width="370dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="2dp"
+        android:background="#695e59"
+        android:layout_marginTop="5dp" />
+
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/DBChart_y"
+        android:layout_width="match_parent"
+        android:layout_height="150dip" />
+
+    <View
+        android:layout_width="370dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="2dp"
+        android:background="#695e59"
+        android:layout_marginTop="5dp" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/DBChart_z"
+        android:layout_width="match_parent"
+        android:layout_height="150dip" />
+
     <ImageButton
         android:id="@+id/backbutton_DB"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@drawable/ic_action_backarrow"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="345dp" />
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="350dp" />
 
 </LinearLayout>

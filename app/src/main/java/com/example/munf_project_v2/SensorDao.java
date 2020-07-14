@@ -6,8 +6,6 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.munf_project_v2.Depot;
-
 @Dao
 public abstract class SensorDao {
 
