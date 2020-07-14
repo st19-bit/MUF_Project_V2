@@ -22,7 +22,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="2dp"
         android:background="#695e59"
-        android:layout_marginTop="5dp" />
+        android:layout_marginBottom="15dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/DBChart_x"
@@ -34,7 +34,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="2dp"
         android:background="#695e59"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp" />
 
 
     <com.github.mikephil.charting.charts.LineChart
@@ -47,7 +48,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="2dp"
         android:background="#695e59"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/DBChart_z"
@@ -59,7 +61,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/ic_action_backarrow"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="350dp" />
 
 </LinearLayout>

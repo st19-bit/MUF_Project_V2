@@ -84,7 +84,7 @@ public class MonitoringFragment extends Fragment {
         // ++++++++++++ BARCHART ++++++++++++
         final BarChart barChart = view.findViewById(R.id.livedata_barchart);
         barChart.setNoDataText(getString(R.string.start_measurement));
-        barChart.setBackgroundColor(Color.WHITE);
+        barChart.setBackgroundColor(Color.TRANSPARENT);
         // Setup für Barchart
 
         ArrayList<BarEntry> entries = new ArrayList<>();

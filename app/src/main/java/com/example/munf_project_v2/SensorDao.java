@@ -6,6 +6,9 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import java.util.List;
+
+
 @Dao
 public abstract class SensorDao {
 
@@ -14,4 +17,7 @@ public abstract class SensorDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract long insert (Depot depot);
+
+    @Query("SELECT * FROM aufnahme")
+    public abstract LiveData<List<Depot>> getAllMessung();
 }

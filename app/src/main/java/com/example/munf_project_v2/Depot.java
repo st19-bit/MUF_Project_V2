@@ -1,5 +1,6 @@
 package com.example.munf_project_v2;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,6 +8,7 @@ import androidx.room.PrimaryKey;
 public class Depot {
 
     @PrimaryKey
+    @NonNull
     private int zeile;
     private float x;
     private float y;
@@ -18,7 +20,7 @@ public class Depot {
         this.y = y;
         this.z = z;
         this.time = time;
-        this.zeile=zeile;
+        this.zeile = zeile;
     }
 
 
