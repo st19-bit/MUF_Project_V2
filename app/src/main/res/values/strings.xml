@@ -22,4 +22,6 @@
     <string name="Keepgoing">Keep going!</string>
     <string name="recording">Recording...</string>
     <string name="recording_stoped">Recording has stopped</string>
+    <string name="mm_dd_yyyy">MM/DD/YYYY</string>
+    <string name="enter_your_username">Enter your username</string>
 </resources>

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_startFragment_to_monitoringFragment"
             app:destination="@id/monitoringFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_datenbankFragment"
+            app:destination="@id/datenbankFragment" />
     </fragment>
 
     <fragment

@@ -2,21 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:gravity="center"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#a49189"
     tools:context=".StartActivity">
 
+    <EditText android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:hint="@string/enter_your_username" />
+
+    <EditText android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:hint="@string/mm_dd_yyyy" />
+
     <Button
         android:id="@+id/button_measurement"
-        android:layout_width="350dp"
+        android:layout_gravity="center_horizontal"
+
+        android:layout_width="250dp"
         android:layout_height="100dp"
-        android:layout_gravity="center_vertical"
         android:text="@string/start_new_measurement"
-        android:textSize="20dp"
+        android:textSize="23dp"
         android:textStyle="bold"
+        android:layout_marginTop="65dp"
         android:background="@drawable/custom_start_button"/>
 
 </LinearLayout>

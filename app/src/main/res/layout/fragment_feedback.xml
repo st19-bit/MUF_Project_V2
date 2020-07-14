@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textColor="#695e59"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp" />
@@ -76,10 +76,9 @@
 
     <ImageButton
         android:id="@+id/backbutton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@drawable/ic_action_backarrow"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="345dp" />
+        android:layout_marginLeft="350dp" />
 
 </LinearLayout>
