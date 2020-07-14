@@ -23,6 +23,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import java.util.ArrayList;
 
 public class DatenbankFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,13 +84,13 @@ public class DatenbankFragment extends Fragment {
                                 lineDataSet_x.setDrawValues(false);
 
                                 LineDataSet lineDataSet_y = new LineDataSet(y_values, "y-axis");
-                                lineDataSet_y.setColor(Color.BLUE);
+                                lineDataSet_y.setColor(Color.RED);
                                 lineDataSet_y.setDrawCircles(false);
                                 lineDataSet_y.setDrawCircleHole(false);
                                 lineDataSet_y.setDrawValues(false);
 
                                 LineDataSet lineDataSet_z = new LineDataSet(z_values, "z-axis");
-                                lineDataSet_z.setColor(Color.BLUE);
+                                lineDataSet_z.setColor(Color.GREEN);
                                 lineDataSet_z.setDrawCircles(false);
                                 lineDataSet_z.setDrawCircleHole(false);
                                 lineDataSet_z.setDrawValues(false);
@@ -107,16 +108,17 @@ public class DatenbankFragment extends Fragment {
                                 lineChart_z.setData(data_z);
                                 lineChart_z.invalidate();
 
-                                count = count+1;
+                                count = count + 1;
 
                             }
                         });
 
 
         button_back_DB.setOnClickListener(new View.OnClickListener() {
-            @Override
+         @Override
             public void onClick(View view) {
                 controller.navigate(R.id.action_datenbankFragment_to_monitoringFragment);
+
             }
         });
     }

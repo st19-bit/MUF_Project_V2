@@ -202,9 +202,6 @@ public class MonitoringFragment extends Fragment {
                     null,
                     UUID.randomUUID().toString());
 
-            count = 0;
-            datalist.clear();
-
         });
 
     }
@@ -247,13 +244,11 @@ public class MonitoringFragment extends Fragment {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             mediaBinder = (MediaService.MediaBinder) iBinder;
-
         }
 
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
             mediaBinder = null;
-
         }
     }
 
