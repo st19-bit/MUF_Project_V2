@@ -10,6 +10,8 @@ import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -58,10 +60,22 @@ public class FeedbackFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        final NavController controller = Navigation.findNavController(view);
+
         final TextView sensor_xyz = view.findViewById(R.id.tv_feedbacksensor_xyz);
         final TextView feedback_x = view.findViewById(R.id.tv_feedback_x);
         final TextView feedback_y = view.findViewById(R.id.tv_feedback_y);
         final TextView feedback_z = view.findViewById(R.id.tv_feedback_z);
+        final ImageButton button_back = view.findViewById(R.id.backbutton);
+
+
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                controller.navigate(R.id.action_feedbackFragment_to_monitoringFragment);
+            }
+        });
+
 
 
         LineChart lineChart_x = view.findViewById(R.id.liveChart_x);
@@ -196,6 +210,8 @@ public class FeedbackFragment extends Fragment {
 
 
         });
+
+
     }
 
     @Override

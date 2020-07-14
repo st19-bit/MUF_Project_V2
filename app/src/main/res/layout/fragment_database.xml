@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:background="#a49189">
 
-
+    <ImageButton
+        android:id="@+id/backbutton_DB"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_action_backarrow"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="345dp" />
 
 </LinearLayout>

@@ -28,7 +28,7 @@
         android:id="@+id/tv_feedback_x"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="2.5dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_x"
@@ -40,14 +40,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="2dp"
         android:background="#695e59"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:id="@+id/tv_feedback_y"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="2.5dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_y"
@@ -59,18 +59,27 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="2dp"
         android:background="#695e59"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="5dp" />
 
 
     <TextView
         android:id="@+id/tv_feedback_z"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="2.5dp" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/liveChart_z"
         android:layout_width="match_parent"
         android:layout_height="150dip" />
+
+    <ImageButton
+        android:id="@+id/backbutton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_action_backarrow"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="345dp" />
+
 </LinearLayout>

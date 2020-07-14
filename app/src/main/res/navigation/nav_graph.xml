@@ -35,10 +35,17 @@
             android:name="displayString"
             android:defaultValue="Default"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_feedbackFragment_to_monitoringFragment"
+            app:destination="@id/monitoringFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_database"
         android:id="@+id/datenbankFragment"
         android:name="com.example.munf_project_v2.DatenbankFragment"
-        android:label="DatenbankFragment" />
+        android:label="DatenbankFragment" >
+        <action
+            android:id="@+id/action_datenbankFragment_to_monitoringFragment"
+            app:destination="@id/monitoringFragment" />
+    </fragment>
 </navigation>
