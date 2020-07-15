@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -75,6 +76,7 @@ public class MonitoringFragment extends Fragment {
         final Button button_stop = view.findViewById(R.id.button_stop);
         final Button button_change_fragment = view.findViewById(R.id.button_to_feedback);
         final Button button_change_to_database = view.findViewById(R.id.button_to_database);
+        final ImageButton backtostart = view.findViewById(R.id.backtostartbutton);
 
 
         observer = null;
@@ -202,6 +204,13 @@ public class MonitoringFragment extends Fragment {
                     null,
                     UUID.randomUUID().toString());
 
+        });
+
+        backtostart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                controller.navigate(R.id.action_monitoringFragment_to_startFragment);
+            }
         });
 
     }

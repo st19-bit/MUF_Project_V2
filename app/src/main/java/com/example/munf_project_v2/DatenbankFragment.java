@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class DatenbankFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         final NavController controller = Navigation.findNavController(view);
         final ImageButton button_back_DB = view.findViewById(R.id.backbutton_DB);
+
 
         LineChart lineChart_x = view.findViewById(R.id.DBChart_x);
         Description desc_x = new Description();

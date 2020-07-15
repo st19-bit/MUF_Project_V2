@@ -15,7 +15,8 @@
         android:textSize="30sp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="20dp"/>
+
 
     <View
         android:layout_width="370dp"
@@ -61,7 +62,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/ic_action_backarrow"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:layout_marginLeft="350dp" />
 
 </LinearLayout>
